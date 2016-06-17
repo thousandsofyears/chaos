@@ -1,7 +1,7 @@
 FROM alpine:latest
 
-RUN bash -c "apk add --no-cache --update bash git python-dev gcc cmake vim && \
-    git clone https://github.com/rushsinging/jTools.git && \
+RUN apk add --no-cache --update bash git python-dev gcc cmake vim && \
+    bash -c "git clone https://github.com/rushsinging/jTools.git && \
     cp jTools/sh/bash_aliases ~/.bash_aliases && \
     cp jTools/sh/bash_profile ~/.bash_profile && \
     cp jTools/sh/bashrc ~/.bashrc && \
