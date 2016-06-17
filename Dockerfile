@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache --update grep bash git python-dev build-base gcc abuild binutils cmake vim && \
+RUN apk add --no-cache --update grep bash git python-dev build-base gcc abuild binutils cmake vim coreutils && \
     bash -c "pushd ~ && \
     git clone https://github.com/rushsinging/jTools.git && \
     cp jTools/sh/bash_aliases ~/.bash_aliases && \
