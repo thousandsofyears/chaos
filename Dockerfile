@@ -9,7 +9,7 @@ RUN apk add --no-cache --update bash git python-dev gcc cmake vim && \
     pushd .vim_runtime && \
     git submodule update --init --recursive && \
     pushd sources_plugins/ycm-vim && \
-    git submodule update --init --recursive && \
+    git submodule update --init --recursive
      
 
 ENTRYPOINT ["bash"]
