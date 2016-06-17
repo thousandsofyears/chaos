@@ -12,4 +12,4 @@ RUN apk add --no-cache --update bash git python-dev gcc cmake vim && \
     git submodule update --init --recursive"
      
 
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["bash" "-c"]
