@@ -1,7 +1,9 @@
 FROM alpine:latest
 
-RUN apk add --no-cache --update bash git python-dev gcc cmake vim && \
-    bash -c "git clone https://github.com/rushsinging/jTools.git && \
+RUN apk del grep && \
+    apk add --no-cache --update grep bash git python-dev build-base gcc abuild binutils cmake vim && \
+    bash -c "pushd ~ && \
+    git clone https://github.com/rushsinging/jTools.git && \
     cp jTools/sh/bash_aliases ~/.bash_aliases && \
     cp jTools/sh/bash_profile ~/.bash_profile && \
     cp jTools/sh/bashrc ~/.bashrc && \
@@ -9,7 +11,8 @@ RUN apk add --no-cache --update bash git python-dev gcc cmake vim && \
     pushd .vim_runtime && \
     git submodule update --init --recursive && \
     pushd sources_plugins/ycm-vim && \
-    git submodule update --init --recursive"
+    git submodule update --init --recursive && \
+    ./install && popd && ./install_jade_vimrc.sh && ./make_dircolors.sh"
      
 
 ENTRYPOINT ["bash", "-c"]
