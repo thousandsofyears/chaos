@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache --update bash git python-dev gcc cmake vim && \
+RUN bash -c "apk add --no-cache --update bash git python-dev gcc cmake vim && \
     git clone https://github.com/rushsinging/jTools.git && \
     cp jTools/sh/bash_aliases ~/.bash_aliases && \
     cp jTools/sh/bash_profile ~/.bash_profile && \
@@ -9,7 +9,7 @@ RUN apk add --no-cache --update bash git python-dev gcc cmake vim && \
     pushd .vim_runtime && \
     git submodule update --init --recursive && \
     pushd sources_plugins/ycm-vim && \
-    git submodule update --init --recursive
+    git submodule update --init --recursive"
      
 
 ENTRYPOINT ["bash"]
