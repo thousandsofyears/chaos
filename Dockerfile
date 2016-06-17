@@ -11,7 +11,7 @@ RUN apk add --no-cache --update grep bash git python-dev build-base gcc abuild b
     git submodule update --init --recursive && \
     pushd sources_plugins/ycm-vim && \
     git submodule update --init --recursive && \
-    ./install && popd && ./install_jade_vimrc.sh && ./make_dircolors.sh"
+    ./install.sh && popd && ./install_jade_vimrc.sh && ./make_dircolors.sh"
      
 
 ENTRYPOINT ["bash", "-c"]
