@@ -1,17 +1,10 @@
-FROM alpine:latest
+FROM ubuntu:15.04
 
-RUN apk add --no-cache --update grep bash git python-dev build-base gcc abuild binutils cmake vim coreutils && \
-    bash -c "pushd ~ && \
-    git clone https://github.com/rushsinging/jTools.git && \
-    cp jTools/sh/bash_aliases ~/.bash_aliases && \
-    cp jTools/sh/bash_profile ~/.bash_profile && \
-    cp jTools/sh/bashrc ~/.bashrc && \
-    git clone https://github.com/rushsinging/vimrc.git .vim_runtime && \
-    pushd .vim_runtime && \
-    git submodule update --init --recursive && \
-    pushd sources_plugins/ycm-vim && \
-    git submodule update --init --recursive && \
-    ./install.sh && popd && sh install_jade_vimrc.sh"
-     
+# COPY ./sources.list.vivid /etc/apt/sources.list
 
-ENTRYPOINT ["bash", "-c"]
+RUN apt-get update && apt-get install -y curl openssh-server ca-certificates postfix 
+
+ENV GITLAB_VERSION 8.9.0
+
+RUN wget https://packages.gitlab.com/gitlab/gitlab-ce/packages/debian/jessie/gitlab-ce_$GITLAB_VERSION-ce.0_amd64.deb/download && \
+    dpkg -i gitlab-ce-$GITLAB_VERSION.deb
